@@ -13,10 +13,10 @@ namespace Subnetting
 {
     public partial class Form1 : Form
     {
-        int[] ottetto;
-        int netmask;
-        int numhost;
-        List<Sottorete> listSottorete;
+        private int[] ottetto;
+        private int netmask;
+        private int numhost;
+        private List<Sottorete> listSottorete;
 
         public Form1()
         {
@@ -29,27 +29,52 @@ namespace Subnetting
 
         private void btnCalcola_Click(object sender, EventArgs e)
         {
+            dataGridView1.Rows.Clear();
+            listSottorete.Sort();
+
+            //TODO: calcolare sottoreti
+
+            Sottorete s = null;
+
+            for (int i = 0; i < listSottorete.Count; i++)
+            {
+                s = listSottorete[i];
+                dataGridView1.Rows.Add(s.ip.classe, s.ip, s.ip.netmask, "", "", s.numhost);
+                //dataGridView1.Rows.Add(s.ip.classe, s.ip, s.ip.netmask, s.broadcast, s.range[0] + " - " + s.range[1], s.numhost);
+            }
+        }
+
+        private void pulisci()
+        {
+            txtIP.Clear();
+            txtMask.Clear();
+            txtHost.Clear();
+        }
+
+        private void btnInserisci_Click(object sender, EventArgs e)
+        {
             ottetto = txtIP.Text.Split('.').Select(int.Parse).ToArray();
             netmask = Int32.Parse(txtMask.Text);
             numhost = Int32.Parse(txtHost.Text);
-            Ip ip = new Ip(ottetto, netmask);
-            Sottorete sottorete = new Sottorete(ip,numhost);
+            Ip ip = null;
+            Sottorete sottorete = null;
 
-            if (sottorete.isValido())
+            try
             {
+                ip = new Ip(ottetto, netmask);
+                sottorete = new Sottorete(ip, numhost);
+                sottorete.checkValido();
                 listSottorete.Add(sottorete);
-
-                Console.WriteLine("IP: " + ip.getIndirizzo() + "/" + ip.getMask());
-
-                //TODO: AGGIUNGERE LA RIGA ALLA TABELLA SOLO QUANDO LA SOTTORETE E' GIA' STATA CALCOLATA
-                dataGridView1.Rows.Add(ip.getIndirizzo(), ip.getMask(), "", "", numhost);     
-            }else
-            {
-                MessageBox.Show("Inserire un indirizzo IP valido");
-                txtIP.Clear();
-                txtMask.Clear();
-                txtHost.Clear();
+                dataGridView1.Rows.Add(ip.classe, ip, ip.netmask, "", "", numhost);
             }
+            catch(EccezioneClasseNonValida ex)
+            { 
+                MessageBox.Show(ex.Message);
+                pulisci();
+            }
+
+            this.txtIP.Enabled = false;
+            this.txtMask.Enabled = false;
 
         }
     }

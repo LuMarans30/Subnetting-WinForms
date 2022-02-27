@@ -34,13 +34,15 @@
             this.txtMask = new System.Windows.Forms.TextBox();
             this.btnCalcola = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtHost = new System.Windows.Forms.TextBox();
+            this.btnInserisci = new System.Windows.Forms.Button();
+            this.classe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rete = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mask = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.broadcast = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.range = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.host = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtHost = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,9 +81,9 @@
             // 
             // btnCalcola
             // 
-            this.btnCalcola.Location = new System.Drawing.Point(15, 405);
+            this.btnCalcola.Location = new System.Drawing.Point(12, 459);
             this.btnCalcola.Name = "btnCalcola";
-            this.btnCalcola.Size = new System.Drawing.Size(546, 33);
+            this.btnCalcola.Size = new System.Drawing.Size(644, 33);
             this.btnCalcola.TabIndex = 3;
             this.btnCalcola.Text = "Calcola";
             this.btnCalcola.UseVisualStyleBackColor = true;
@@ -92,15 +94,48 @@
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.classe,
             this.rete,
             this.mask,
             this.broadcast,
             this.range,
             this.host});
-            this.dataGridView1.Location = new System.Drawing.Point(15, 86);
+            this.dataGridView1.Location = new System.Drawing.Point(15, 83);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(543, 313);
+            this.dataGridView1.Size = new System.Drawing.Size(641, 370);
             this.dataGridView1.TabIndex = 14;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(29, 49);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(58, 13);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "Num. host:";
+            // 
+            // txtHost
+            // 
+            this.txtHost.Location = new System.Drawing.Point(93, 46);
+            this.txtHost.Name = "txtHost";
+            this.txtHost.Size = new System.Drawing.Size(127, 20);
+            this.txtHost.TabIndex = 16;
+            // 
+            // btnInserisci
+            // 
+            this.btnInserisci.Location = new System.Drawing.Point(226, 44);
+            this.btnInserisci.Name = "btnInserisci";
+            this.btnInserisci.Size = new System.Drawing.Size(130, 23);
+            this.btnInserisci.TabIndex = 17;
+            this.btnInserisci.Text = "Inserisci nuova sottorete";
+            this.btnInserisci.UseVisualStyleBackColor = true;
+            this.btnInserisci.Click += new System.EventHandler(this.btnInserisci_Click);
+            // 
+            // classe
+            // 
+            this.classe.HeaderText = "Classe";
+            this.classe.Name = "classe";
+            this.classe.ReadOnly = true;
             // 
             // rete
             // 
@@ -132,27 +167,12 @@
             this.host.Name = "host";
             this.host.ReadOnly = true;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(29, 49);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 13);
-            this.label1.TabIndex = 15;
-            this.label1.Text = "Num. host:";
-            // 
-            // txtHost
-            // 
-            this.txtHost.Location = new System.Drawing.Point(93, 46);
-            this.txtHost.Name = "txtHost";
-            this.txtHost.Size = new System.Drawing.Size(127, 20);
-            this.txtHost.TabIndex = 16;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(573, 450);
+            this.ClientSize = new System.Drawing.Size(665, 502);
+            this.Controls.Add(this.btnInserisci);
             this.Controls.Add(this.txtHost);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView1);
@@ -178,13 +198,15 @@
         private System.Windows.Forms.TextBox txtMask;
         private System.Windows.Forms.Button btnCalcola;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtHost;
+        private System.Windows.Forms.Button btnInserisci;
+        private System.Windows.Forms.DataGridViewTextBoxColumn classe;
         private System.Windows.Forms.DataGridViewTextBoxColumn rete;
         private System.Windows.Forms.DataGridViewTextBoxColumn mask;
         private System.Windows.Forms.DataGridViewTextBoxColumn broadcast;
         private System.Windows.Forms.DataGridViewTextBoxColumn range;
         private System.Windows.Forms.DataGridViewTextBoxColumn host;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtHost;
     }
 }
 

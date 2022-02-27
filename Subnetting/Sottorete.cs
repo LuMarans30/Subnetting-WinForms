@@ -6,27 +6,35 @@ using System.Threading.Tasks;
 
 namespace Subnetting
 {
-    internal class Sottorete
+    internal class Sottorete: IComparable<Sottorete>
     {
-        private Ip ip;
-        private int numhost;
-        private Ip broadcast;
-        private Ip[] range;
+
+        public Ip broadcast { private set; get; }
+        public Ip[] range { private set; get; }
+        public int numhost { private set; get; }
+        public Ip ip { private set; get; }
 
         public Sottorete(Ip ip, int numhost)
         {
             this.ip = ip;
             this.numhost = numhost;
-            this.range = new Ip[1];
+            range = new Ip[2];
         }
 
-        public bool isValido()
+        public void checkValido()
         {
-            if (ip.indirizzo.Count() == 4 && ip.netmask <= 30 && !ip.indirizzo.Any(item => item > 255) && numhost > 0)
-                return true;
-            else
-                return false;
-
+            if (ip.indirizzo.Count() != 4 || ip.netmask > 30 || ip.indirizzo.Any(item => item > 255) || numhost <= 0)
+                throw new EccezioneClasseNonValida("Ip non valido o parametri errati");
         }
+
+        public int CompareTo(Sottorete s)
+        {
+            if (s.numhost == numhost)
+                return 0;
+            if (s.numhost < numhost)
+                return -1;
+            return 1;
+        }
+
     }
 }
