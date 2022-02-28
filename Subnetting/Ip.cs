@@ -8,25 +8,19 @@ namespace Subnetting
 {
     class Ip
     {
-        public int[] indirizzo { private set; get; }
-        public int netmask { private set; get; }
-        public char classe { private set; get; }
+        public int[] indirizzo {  get; private set; }
+        public char classe {  get; private set; }
 
-        public Ip(int[] ottetto, int netmask)
+        public Ip(int[] ottetto)
         {
             this.indirizzo = ottetto;
-            this.netmask = netmask;
             int tmpClasse = ottetto[0] >> 5;
             switch(tmpClasse)
             {
-                case 0:
-                case 1:
-                case 2:
-                case 3:
+                case int n when n < 4:
                     this.classe = 'A';
                     break;
-                case 4:
-                case 5:
+                case int n when n < 6:
                     this.classe = 'B';
                     break;
                 case 6:
@@ -37,10 +31,15 @@ namespace Subnetting
             }
         }
 
+        public Ip (Ip ip)
+        {
+            this.classe = ip.classe;
+            this.indirizzo = ip.indirizzo;
+        }
+
         public override string ToString()
         {
             return string.Join(".", indirizzo);
         }
-
     }
 }

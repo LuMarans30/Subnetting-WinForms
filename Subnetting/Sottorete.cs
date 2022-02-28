@@ -9,21 +9,24 @@ namespace Subnetting
     internal class Sottorete: IComparable<Sottorete>
     {
 
-        public Ip broadcast { private set; get; }
-        public Ip[] range { private set; get; }
-        public int numhost { private set; get; }
-        public Ip ip { private set; get; }
+        public Ip broadcast { get; set; }
+        public Ip[] range { get; set; }
+        public int netmask { get; set; }
+        public int numhost { get; set; }
+        public Ip ip { get; set; }
 
-        public Sottorete(Ip ip, int numhost)
+        public Sottorete(Ip ip, int netmask, int numhost)
         {
             this.ip = ip;
+            this.netmask = netmask;
+            this.broadcast = null;
             this.numhost = numhost;
             range = new Ip[2];
         }
 
         public void checkValido()
         {
-            if (ip.indirizzo.Count() != 4 || ip.netmask > 30 || ip.indirizzo.Any(item => item > 255) || numhost <= 0)
+            if (ip.indirizzo.Count() != 4 || netmask > 30 || ip.indirizzo.Any(item => item > 255) || numhost <= 0)
                 throw new EccezioneClasseNonValida("Ip non valido o parametri errati");
         }
 

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Collections;
 
 namespace Subnetting
 {
@@ -31,27 +32,45 @@ namespace Subnetting
         {
             dataGridView1.Rows.Clear();
             listSottorete.Sort();
-
-            byte[] ip = ottetto.SelectMany(BitConverter.GetBytes).ToArray();
-
-            for(int i = 0; i < listSottorete.Count; i++)
-            {
-                Console.WriteLine("La potenza di 2 più vicina a " + listSottorete[i].numhost + " è " + listSottorete[i].ToPotenzaDi2());
-
-            }
-
-            //TODO: calcolare sottoreti
-
-
+            int num;
             Sottorete s = null;
 
             for (int i = 0; i < listSottorete.Count; i++)
             {
                 s = listSottorete[i];
-                dataGridView1.Rows.Add(s.ip.classe, s.ip, s.ip.netmask, "", "", s.numhost);
-                //dataGridView1.Rows.Add(s.ip.classe, s.ip, s.ip.netmask, s.broadcast, s.range[0] + " - " + s.range[1], s.numhost);
+                num = s.ToPotenzaDi2();
+                s.broadcast = new Ip(s.ip);
+
+                switch(num)
+                {
+                    case int n when n < 8:
+                        s.broadcast.indirizzo[3] |= (int)Math.Pow(2,num)-1;
+                        break;
+                    case int n when n >= 8 && n<16:
+                        s.broadcast.indirizzo[3] |= 255;
+                        num -= 8;
+                        s.broadcast.indirizzo[2] |= (int)Math.Pow(2,num)-1;
+                        break;
+                    case int n when n >= 16 && n < 24:
+                        s.broadcast.indirizzo[3] |= 255;
+                        s.broadcast.indirizzo[2] |= 255;
+                        num -= 16;
+                        s.broadcast.indirizzo[1] |= (int)Math.Pow(2, num)-1;
+                        break;
+                }
+
+
+               
+                s.range[0] = s.ip;
+                s.range[0].indirizzo[3] += 1;
+                s.range[1] = s.broadcast;
+                s.range[1].indirizzo[3] -= 1;
+                dataGridView1.Rows.Add(s.ip.classe, s.ip, s.netmask, s.broadcast, s.range[0] + " - " + s.range[1], s.numhost);
             }
+
         }
+
+    
 
         private void pulisci()
         {
@@ -79,11 +98,11 @@ namespace Subnetting
 
                 Ip ip = null;
                 Sottorete sottorete = null;
-                ip = new Ip(ottetto, netmask);
-                sottorete = new Sottorete(ip, numhost);
+                ip = new Ip(ottetto);
+                sottorete = new Sottorete(ip,netmask, numhost);
                 sottorete.checkValido();
                 listSottorete.Add(sottorete);
-                dataGridView1.Rows.Add(ip.classe, ip, ip.netmask, "", "", numhost);
+                dataGridView1.Rows.Add(ip.classe, ip, netmask, "", "", numhost);
 
                 this.txtIP.Enabled = false;
                 this.txtMask.Enabled = false;
@@ -99,3 +118,4 @@ namespace Subnetting
         }
     }
 }
+

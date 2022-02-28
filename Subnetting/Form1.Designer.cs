@@ -83,7 +83,7 @@
             // 
             this.btnCalcola.Location = new System.Drawing.Point(12, 459);
             this.btnCalcola.Name = "btnCalcola";
-            this.btnCalcola.Size = new System.Drawing.Size(644, 33);
+            this.btnCalcola.Size = new System.Drawing.Size(646, 33);
             this.btnCalcola.TabIndex = 3;
             this.btnCalcola.Text = "Calcola";
             this.btnCalcola.UseVisualStyleBackColor = true;
@@ -102,7 +102,7 @@
             this.host});
             this.dataGridView1.Location = new System.Drawing.Point(15, 83);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(641, 370);
+            this.dataGridView1.Size = new System.Drawing.Size(743, 370);
             this.dataGridView1.TabIndex = 14;
             // 
             // label1
@@ -160,6 +160,7 @@
             this.range.HeaderText = "Range";
             this.range.Name = "range";
             this.range.ReadOnly = true;
+            this.range.Width = 200;
             // 
             // host
             // 
@@ -171,7 +172,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(665, 502);
+            this.ClientSize = new System.Drawing.Size(772, 502);
             this.Controls.Add(this.btnInserisci);
             this.Controls.Add(this.txtHost);
             this.Controls.Add(this.label1);
