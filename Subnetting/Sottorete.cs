@@ -35,6 +35,15 @@ namespace Subnetting
                 return -1;
             return 1;
         }
+        public int ToPotenzaDi2()
+        {
+            if (numhost < 2)
+            {
+                return 0;
+            }
+
+            return (int)Math.Log(numhost - 1, 2) + 1;
+        }
 
     }
 }

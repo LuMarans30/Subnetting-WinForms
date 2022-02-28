@@ -32,7 +32,16 @@ namespace Subnetting
             dataGridView1.Rows.Clear();
             listSottorete.Sort();
 
+            byte[] ip = ottetto.SelectMany(BitConverter.GetBytes).ToArray();
+
+            for(int i = 0; i < listSottorete.Count; i++)
+            {
+                Console.WriteLine("La potenza di 2 più vicina a " + listSottorete[i].numhost + " è " + listSottorete[i].ToPotenzaDi2());
+
+            }
+
             //TODO: calcolare sottoreti
+
 
             Sottorete s = null;
 
@@ -46,35 +55,46 @@ namespace Subnetting
 
         private void pulisci()
         {
-            txtIP.Clear();
-            txtMask.Clear();
+            if (txtIP.Enabled == true)
+            {
+                txtIP.Clear();
+                txtMask.Clear();
+            }
+
             txtHost.Clear();
         }
 
         private void btnInserisci_Click(object sender, EventArgs e)
         {
-            ottetto = txtIP.Text.Split('.').Select(int.Parse).ToArray();
-            netmask = Int32.Parse(txtMask.Text);
-            numhost = Int32.Parse(txtHost.Text);
-            Ip ip = null;
-            Sottorete sottorete = null;
-
             try
             {
+                if (String.IsNullOrEmpty(txtIP.Text) || String.IsNullOrEmpty(txtMask.Text) || String.IsNullOrEmpty(txtHost.Text))
+                {
+                    throw new EccezioneClasseNonValida("Tutti i campi sono obbligatori");
+                }
+
+                ottetto = txtIP.Text.Split('.').Select(int.Parse).ToArray();
+                netmask = Int32.Parse(txtMask.Text);
+                numhost = Int32.Parse(txtHost.Text);
+
+                Ip ip = null;
+                Sottorete sottorete = null;
                 ip = new Ip(ottetto, netmask);
                 sottorete = new Sottorete(ip, numhost);
                 sottorete.checkValido();
                 listSottorete.Add(sottorete);
                 dataGridView1.Rows.Add(ip.classe, ip, ip.netmask, "", "", numhost);
+
+                this.txtIP.Enabled = false;
+                this.txtMask.Enabled = false;
+
+
             }
             catch(EccezioneClasseNonValida ex)
-            { 
+            {
                 MessageBox.Show(ex.Message);
                 pulisci();
             }
-
-            this.txtIP.Enabled = false;
-            this.txtMask.Enabled = false;
 
         }
     }
