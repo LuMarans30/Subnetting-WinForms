@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Subnetting
 {
-    internal class Sottorete: IComparable<Sottorete>
+    public class Sottorete: IComparable<Sottorete>
     {
 
         public Ip broadcast { get; set; }
@@ -17,9 +17,8 @@ namespace Subnetting
 
         public Sottorete(Ip ip, int netmask, int numhost)
         {
-            this.ip = ip;
+            this.ip = new Ip(ip.indirizzo);
             this.netmask = netmask;
-            this.broadcast = null;
             this.numhost = numhost;
             range = new Ip[2];
         }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Subnetting
 {
-    internal class EccezioneClasseNonValida : Exception
+    public class EccezioneClasseNonValida : Exception
     {
 
         public EccezioneClasseNonValida(string message):base(message)

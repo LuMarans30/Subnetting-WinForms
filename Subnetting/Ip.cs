@@ -6,35 +6,32 @@ using System.Threading.Tasks;
 
 namespace Subnetting
 {
-    class Ip
+    public class Ip
     {
-        public int[] indirizzo {  get; private set; }
-        public char classe {  get; private set; }
+        public Int32[] indirizzo { get; set; }
+        public char classe {  get; set; }
 
-        public Ip(int[] ottetto)
+        public Ip(Int32[] indirizzo)
         {
-            this.indirizzo = ottetto;
-            int tmpClasse = ottetto[0] >> 5;
+            this.indirizzo = new Int32[4];
+            this.indirizzo=indirizzo;
+            classe = ' ';
+
+            int tmpClasse = indirizzo[0] >> 5;
             switch(tmpClasse)
             {
                 case int n when n < 4:
-                    this.classe = 'A';
+                    classe = 'A';
                     break;
                 case int n when n < 6:
-                    this.classe = 'B';
+                    classe = 'B';
                     break;
                 case 6:
-                    this.classe = 'C';
+                    classe = 'C';
                     break;
                 default:
                     throw new EccezioneClasseNonValida("La classe dell'indirizzo IP non è valida");
             }
-        }
-
-        public Ip (Ip ip)
-        {
-            this.classe = ip.classe;
-            this.indirizzo = ip.indirizzo;
         }
 
         public override string ToString()
