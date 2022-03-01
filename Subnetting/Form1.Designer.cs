@@ -34,15 +34,15 @@
             this.txtMask = new System.Windows.Forms.TextBox();
             this.btnCalcola = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtHost = new System.Windows.Forms.TextBox();
-            this.btnInserisci = new System.Windows.Forms.Button();
             this.classe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rete = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mask = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.broadcast = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.range = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.host = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtHost = new System.Windows.Forms.TextBox();
+            this.btnInserisci = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -83,7 +83,7 @@
             // 
             this.btnCalcola.Location = new System.Drawing.Point(12, 459);
             this.btnCalcola.Name = "btnCalcola";
-            this.btnCalcola.Size = new System.Drawing.Size(646, 33);
+            this.btnCalcola.Size = new System.Drawing.Size(746, 33);
             this.btnCalcola.TabIndex = 3;
             this.btnCalcola.Text = "Calcola";
             this.btnCalcola.UseVisualStyleBackColor = true;
@@ -104,32 +104,6 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(743, 370);
             this.dataGridView1.TabIndex = 14;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(29, 49);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 13);
-            this.label1.TabIndex = 15;
-            this.label1.Text = "Num. host:";
-            // 
-            // txtHost
-            // 
-            this.txtHost.Location = new System.Drawing.Point(93, 46);
-            this.txtHost.Name = "txtHost";
-            this.txtHost.Size = new System.Drawing.Size(127, 20);
-            this.txtHost.TabIndex = 16;
-            // 
-            // btnInserisci
-            // 
-            this.btnInserisci.Location = new System.Drawing.Point(226, 44);
-            this.btnInserisci.Name = "btnInserisci";
-            this.btnInserisci.Size = new System.Drawing.Size(130, 23);
-            this.btnInserisci.TabIndex = 17;
-            this.btnInserisci.Text = "Inserisci nuova sottorete";
-            this.btnInserisci.UseVisualStyleBackColor = true;
-            this.btnInserisci.Click += new System.EventHandler(this.btnInserisci_Click);
             // 
             // classe
             // 
@@ -167,6 +141,32 @@
             this.host.HeaderText = "Num. host";
             this.host.Name = "host";
             this.host.ReadOnly = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(29, 49);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(58, 13);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "Num. host:";
+            // 
+            // txtHost
+            // 
+            this.txtHost.Location = new System.Drawing.Point(93, 46);
+            this.txtHost.Name = "txtHost";
+            this.txtHost.Size = new System.Drawing.Size(127, 20);
+            this.txtHost.TabIndex = 16;
+            // 
+            // btnInserisci
+            // 
+            this.btnInserisci.Location = new System.Drawing.Point(226, 44);
+            this.btnInserisci.Name = "btnInserisci";
+            this.btnInserisci.Size = new System.Drawing.Size(130, 23);
+            this.btnInserisci.TabIndex = 17;
+            this.btnInserisci.Text = "Inserisci nuova sottorete";
+            this.btnInserisci.UseVisualStyleBackColor = true;
+            this.btnInserisci.Click += new System.EventHandler(this.btnInserisci_Click);
             // 
             // Form1
             // 

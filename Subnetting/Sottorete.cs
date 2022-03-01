@@ -9,23 +9,43 @@ namespace Subnetting
     public class Sottorete: IComparable<Sottorete>
     {
 
-        public Ip broadcast { get; set; }
-        public Ip[] range { get; set; }
+        public Int32[] broadcast { get; set; }
+        public Int32[] primoH { get; set; }
+        public Int32[] ultimoH { get; set; }
         public int netmask { get; set; }
         public int numhost { get; set; }
-        public Ip ip { get; set; }
+        public Int32[] ipRete { get; set; }
+        public char classe { get; set; }
 
-        public Sottorete(Ip ip, int netmask, int numhost)
+        public Sottorete(Int32[] ipRete, int netmask, int numhost)
         {
-            this.ip = new Ip(ip.indirizzo);
+            this.ipRete = new Int32[4];
+            this.ipRete = ipRete;
             this.netmask = netmask;
             this.numhost = numhost;
-            range = new Ip[2];
+            broadcast = new Int32[4];
+            primoH = new Int32[4];
+            ultimoH = new Int32[4];
+            int tmpClasse = ipRete[0] >> 5;
+            switch (tmpClasse)
+            {
+                case int n when n < 4:
+                    classe = 'A';
+                    break;
+                case int n when n < 6:
+                    classe = 'B';
+                    break;
+                case 6:
+                    classe = 'C';
+                    break;
+                default:
+                    throw new EccezioneClasseNonValida("La classe dell'indirizzo IP non è valida");
+            }
         }
 
         public void checkValido()
         {
-            if (ip.indirizzo.Count() != 4 || netmask > 30 || ip.indirizzo.Any(item => item > 255) || numhost <= 0)
+            if (ipRete.Count() != 4 || netmask > 30 || ipRete.Any(item => item > 255) || numhost <= 0)
                 throw new EccezioneClasseNonValida("Ip non valido o parametri errati");
         }
 
@@ -37,6 +57,7 @@ namespace Subnetting
                 return -1;
             return 1;
         }
+
         public int ToPotenzaDi2()
         {
             if (numhost < 2)
@@ -45,6 +66,11 @@ namespace Subnetting
             }
 
             return (int)Math.Log(numhost - 1, 2) + 1;
+        }
+
+        public override string ToString()
+        {
+            return string.Join(".", ipRete);
         }
 
     }

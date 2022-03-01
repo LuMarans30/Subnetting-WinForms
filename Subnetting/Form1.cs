@@ -32,33 +32,51 @@ namespace Subnetting
 
             for (int i = 0; i < listSottorete.Count; i++)
             {
+                if(i>0)
+                {
+                    for (int k = 0; k < 4; k++)
+                        listSottorete[i].ipRete[k] = listSottorete[i - 1].broadcast[k];
+
+                    if(listSottorete[i].ipRete[3] == 255)
+                    {
+                        listSottorete[i].ipRete[3] = 0;
+                        listSottorete[i].ipRete[2] += 1;
+                    }else
+                        listSottorete[i].ipRete[3] += 1;
+                }
+
                 Sottorete s = listSottorete[i];
                 int num = s.ToPotenzaDi2();
-                s.broadcast = new Ip(s.ip.indirizzo);
+                for(int k=0; k<4; k++)
+                    s.broadcast[k] = s.ipRete[k];
 
                 switch(num)
                 {
                     case int n when n < 8:
-                        s.broadcast.indirizzo[3] |= (Int32)Math.Pow(2,num)-1;
+                        s.broadcast[3] |= (Int32)Math.Pow(2,num)-1;
                         break;
                     case int n when n >= 8 && n<16:
-                        s.broadcast.indirizzo[3] |= 255;
+                        s.broadcast[3] |= 255;
                         num -= 8;
-                        s.broadcast.indirizzo[2] |= (Int32)Math.Pow(2,num)-1;
+                        s.broadcast[2] |= (Int32)Math.Pow(2,num)-1;
                         break;
                     case int n when n >= 16 && n < 24:
-                        s.broadcast.indirizzo[3] |= 255;
-                        s.broadcast.indirizzo[2] |= 255;
+                        s.broadcast[3] |= 255;
+                        s.broadcast[2] |= 255;
                         num -= 16;
-                        s.broadcast.indirizzo[1] |= (Int32)Math.Pow(2, num)-1;
+                        s.broadcast[1] |= (Int32)Math.Pow(2, num)-1;
                         break;
                 }
 
-                s.range[0] = new Ip(s.ip.indirizzo);
-                s.range[0].indirizzo[3] += 1;
-                s.range[1] = new Ip(s.broadcast.indirizzo);
-                s.range[1].indirizzo[3] -= 1;
-                dataGridView1.Rows.Add(s.ip.classe, s.ip, s.netmask, s.broadcast, s.range[0] + " - " + s.range[1], s.numhost);
+                for (int k = 0; k < 4; k++)
+                {
+                    s.primoH[k] = s.ipRete[k];
+                    s.ultimoH[k] = s.broadcast[k];
+                }
+
+                s.primoH[3] += 1;
+                s.ultimoH[3] -= 1;
+                dataGridView1.Rows.Add(s.classe, s, s.netmask, string.Join(".", s.broadcast), string.Join(".", s.primoH) + " - " + string.Join(".", s.ultimoH), s.numhost);
             }
 
         }
@@ -89,11 +107,10 @@ namespace Subnetting
                 netmask = Int32.Parse(txtMask.Text);
                 numhost = Int32.Parse(txtHost.Text);
 
-                Ip ip = new Ip(indirizzo);
-                Sottorete sottorete = new Sottorete(ip, netmask, numhost);
+                Sottorete sottorete = new Sottorete(indirizzo, netmask, numhost);
                 sottorete.checkValido();
                 listSottorete.Add(sottorete);
-                dataGridView1.Rows.Add(ip.classe, ip, netmask, "", "", numhost);
+                dataGridView1.Rows.Add(sottorete.classe, sottorete, netmask, "", "", numhost);
 
                 this.txtIP.Enabled = false;
                 this.txtMask.Enabled = false;
