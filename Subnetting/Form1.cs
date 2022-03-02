@@ -8,12 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Collections;
-using MaterialSkin.Controls;
-using MaterialSkin;
 
 namespace Subnetting
 {
-    public partial class Form1 : MaterialSkin.Controls.MaterialForm
+    public partial class Form1 : Form
     {
         private Int32[] indirizzo =new Int32[4];
         private int netmask;
@@ -172,7 +170,6 @@ namespace Subnetting
             }
 
         }
-
     }
 }
 
