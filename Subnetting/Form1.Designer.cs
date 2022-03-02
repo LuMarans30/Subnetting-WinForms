@@ -28,16 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.lblIP = new System.Windows.Forms.Label();
             this.txtIP = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtMask = new System.Windows.Forms.TextBox();
             this.btnCalcola = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtHost = new System.Windows.Forms.TextBox();
-            this.btnInserisci = new System.Windows.Forms.Button();
             this.classe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rete = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mask = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,6 +42,9 @@
             this.host = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RealNumHost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Spreco = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtHost = new System.Windows.Forms.TextBox();
+            this.btnInserisci = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -110,32 +109,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(943, 370);
             this.dataGridView1.TabIndex = 14;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(29, 49);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 13);
-            this.label1.TabIndex = 15;
-            this.label1.Text = "Num. host:";
-            // 
-            // txtHost
-            // 
-            this.txtHost.Location = new System.Drawing.Point(93, 46);
-            this.txtHost.Name = "txtHost";
-            this.txtHost.Size = new System.Drawing.Size(127, 20);
-            this.txtHost.TabIndex = 3;
-            // 
-            // btnInserisci
-            // 
-            this.btnInserisci.Location = new System.Drawing.Point(226, 44);
-            this.btnInserisci.Name = "btnInserisci";
-            this.btnInserisci.Size = new System.Drawing.Size(130, 23);
-            this.btnInserisci.TabIndex = 4;
-            this.btnInserisci.Text = "Inserisci nuova sottorete";
-            this.btnInserisci.UseVisualStyleBackColor = true;
-            this.btnInserisci.Click += new System.EventHandler(this.btnInserisci_Click);
-            // 
             // classe
             // 
             this.classe.HeaderText = "Classe";
@@ -182,6 +155,32 @@
             // 
             this.Spreco.HeaderText = "Spreco";
             this.Spreco.Name = "Spreco";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(29, 49);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(58, 13);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "Num. host:";
+            // 
+            // txtHost
+            // 
+            this.txtHost.Location = new System.Drawing.Point(93, 46);
+            this.txtHost.Name = "txtHost";
+            this.txtHost.Size = new System.Drawing.Size(127, 20);
+            this.txtHost.TabIndex = 3;
+            // 
+            // btnInserisci
+            // 
+            this.btnInserisci.Location = new System.Drawing.Point(226, 44);
+            this.btnInserisci.Name = "btnInserisci";
+            this.btnInserisci.Size = new System.Drawing.Size(130, 23);
+            this.btnInserisci.TabIndex = 4;
+            this.btnInserisci.Text = "Inserisci nuova sottorete";
+            this.btnInserisci.UseVisualStyleBackColor = true;
+            this.btnInserisci.Click += new System.EventHandler(this.btnInserisci_Click);
             // 
             // Form1
             // 
