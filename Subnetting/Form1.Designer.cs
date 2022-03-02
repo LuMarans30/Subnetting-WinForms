@@ -30,22 +30,23 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.lblIP = new System.Windows.Forms.Label();
-            this.txtIP = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtMask = new System.Windows.Forms.TextBox();
-            this.btnCalcola = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtHost = new System.Windows.Forms.TextBox();
-            this.btnInserisci = new System.Windows.Forms.Button();
+            this.kryptonLabel1 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.kryptonLabel2 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.btnInserisci = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.btnCalcola = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.txtIP = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.txtMask = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.txtHost = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.dataGridView1 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
             this.classe = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rete = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ipRete = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mask = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.broadcast = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.range = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.host = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RealNumHost = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Spreco = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nhost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rnhost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.spreco = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,87 +55,90 @@
             this.lblIP.AutoSize = true;
             this.lblIP.Location = new System.Drawing.Point(12, 15);
             this.lblIP.Name = "lblIP";
-            this.lblIP.Size = new System.Drawing.Size(75, 13);
+            this.lblIP.Size = new System.Drawing.Size(0, 13);
             this.lblIP.TabIndex = 0;
-            this.lblIP.Text = "IP di partenza:";
-            // 
-            // txtIP
-            // 
-            this.txtIP.Location = new System.Drawing.Point(93, 12);
-            this.txtIP.Name = "txtIP";
-            this.txtIP.Size = new System.Drawing.Size(183, 20);
-            this.txtIP.TabIndex = 1;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(282, 16);
+            this.label3.Location = new System.Drawing.Point(313, 15);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(12, 16);
             this.label3.TabIndex = 9;
             this.label3.Text = "/";
             // 
-            // txtMask
+            // kryptonLabel1
             // 
-            this.txtMask.Location = new System.Drawing.Point(301, 12);
-            this.txtMask.Name = "txtMask";
-            this.txtMask.Size = new System.Drawing.Size(30, 20);
-            this.txtMask.TabIndex = 2;
+            this.kryptonLabel1.Location = new System.Drawing.Point(23, 15);
+            this.kryptonLabel1.Name = "kryptonLabel1";
+            this.kryptonLabel1.Size = new System.Drawing.Size(88, 20);
+            this.kryptonLabel1.TabIndex = 16;
+            this.kryptonLabel1.Values.Text = "IP di partenza:";
             // 
-            // btnCalcola
+            // kryptonLabel2
             // 
-            this.btnCalcola.Location = new System.Drawing.Point(12, 459);
-            this.btnCalcola.Name = "btnCalcola";
-            this.btnCalcola.Size = new System.Drawing.Size(946, 33);
-            this.btnCalcola.TabIndex = 5;
-            this.btnCalcola.Text = "Calcola";
-            this.btnCalcola.UseVisualStyleBackColor = true;
-            this.btnCalcola.Click += new System.EventHandler(this.btnCalcola_Click);
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.classe,
-            this.rete,
-            this.mask,
-            this.broadcast,
-            this.range,
-            this.host,
-            this.RealNumHost,
-            this.Spreco});
-            this.dataGridView1.Location = new System.Drawing.Point(15, 83);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(943, 370);
-            this.dataGridView1.TabIndex = 14;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(29, 49);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 13);
-            this.label1.TabIndex = 15;
-            this.label1.Text = "Num. host:";
-            // 
-            // txtHost
-            // 
-            this.txtHost.Location = new System.Drawing.Point(93, 46);
-            this.txtHost.Name = "txtHost";
-            this.txtHost.Size = new System.Drawing.Size(127, 20);
-            this.txtHost.TabIndex = 3;
+            this.kryptonLabel2.Location = new System.Drawing.Point(41, 49);
+            this.kryptonLabel2.Name = "kryptonLabel2";
+            this.kryptonLabel2.Size = new System.Drawing.Size(70, 20);
+            this.kryptonLabel2.TabIndex = 17;
+            this.kryptonLabel2.Values.Text = "Num. host:";
             // 
             // btnInserisci
             // 
-            this.btnInserisci.Location = new System.Drawing.Point(226, 44);
+            this.btnInserisci.Location = new System.Drawing.Point(250, 46);
             this.btnInserisci.Name = "btnInserisci";
-            this.btnInserisci.Size = new System.Drawing.Size(130, 23);
+            this.btnInserisci.Size = new System.Drawing.Size(144, 25);
             this.btnInserisci.TabIndex = 4;
-            this.btnInserisci.Text = "Inserisci nuova sottorete";
-            this.btnInserisci.UseVisualStyleBackColor = true;
+            this.btnInserisci.Values.Text = "Inserisci nuova sottorete";
             this.btnInserisci.Click += new System.EventHandler(this.btnInserisci_Click);
+            // 
+            // btnCalcola
+            // 
+            this.btnCalcola.Location = new System.Drawing.Point(15, 459);
+            this.btnCalcola.Name = "btnCalcola";
+            this.btnCalcola.Size = new System.Drawing.Size(1042, 31);
+            this.btnCalcola.TabIndex = 5;
+            this.btnCalcola.Values.Text = "Calcola";
+            this.btnCalcola.Click += new System.EventHandler(this.btnCalcola_Click);
+            // 
+            // txtIP
+            // 
+            this.txtIP.Location = new System.Drawing.Point(117, 12);
+            this.txtIP.Name = "txtIP";
+            this.txtIP.Size = new System.Drawing.Size(183, 23);
+            this.txtIP.TabIndex = 1;
+            // 
+            // txtMask
+            // 
+            this.txtMask.Location = new System.Drawing.Point(331, 12);
+            this.txtMask.Name = "txtMask";
+            this.txtMask.Size = new System.Drawing.Size(31, 23);
+            this.txtMask.TabIndex = 2;
+            // 
+            // txtHost
+            // 
+            this.txtHost.Location = new System.Drawing.Point(117, 46);
+            this.txtHost.Name = "txtHost";
+            this.txtHost.Size = new System.Drawing.Size(127, 23);
+            this.txtHost.TabIndex = 3;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.classe,
+            this.ipRete,
+            this.mask,
+            this.broadcast,
+            this.range,
+            this.nhost,
+            this.rnhost,
+            this.spreco});
+            this.dataGridView1.Location = new System.Drawing.Point(15, 88);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(1042, 353);
+            this.dataGridView1.TabIndex = 23;
             // 
             // classe
             // 
@@ -142,15 +146,15 @@
             this.classe.Name = "classe";
             this.classe.ReadOnly = true;
             // 
-            // rete
+            // ipRete
             // 
-            this.rete.HeaderText = "Ip di rete";
-            this.rete.Name = "rete";
-            this.rete.ReadOnly = true;
+            this.ipRete.HeaderText = "Ip di rete";
+            this.ipRete.Name = "ipRete";
+            this.ipRete.ReadOnly = true;
             // 
             // mask
             // 
-            this.mask.HeaderText = "Net Mask";
+            this.mask.HeaderText = "Net mask";
             this.mask.Name = "mask";
             this.mask.ReadOnly = true;
             // 
@@ -165,37 +169,40 @@
             this.range.HeaderText = "Range";
             this.range.Name = "range";
             this.range.ReadOnly = true;
-            this.range.Width = 200;
+            this.range.Width = 300;
             // 
-            // host
+            // nhost
             // 
-            this.host.HeaderText = "Num. hosts richiesti";
-            this.host.Name = "host";
-            this.host.ReadOnly = true;
+            this.nhost.HeaderText = "Num. host";
+            this.nhost.Name = "nhost";
+            this.nhost.ReadOnly = true;
             // 
-            // RealNumHost
+            // rnhost
             // 
-            this.RealNumHost.HeaderText = "Vero numero di hosts";
-            this.RealNumHost.Name = "RealNumHost";
+            this.rnhost.HeaderText = "Num. host reale";
+            this.rnhost.Name = "rnhost";
+            this.rnhost.ReadOnly = true;
             // 
-            // Spreco
+            // spreco
             // 
-            this.Spreco.HeaderText = "Spreco";
-            this.Spreco.Name = "Spreco";
+            this.spreco.HeaderText = "Spreco";
+            this.spreco.Name = "spreco";
+            this.spreco.ReadOnly = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(970, 502);
-            this.Controls.Add(this.btnInserisci);
-            this.Controls.Add(this.txtHost);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(1067, 502);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.btnCalcola);
+            this.Controls.Add(this.txtHost);
             this.Controls.Add(this.txtMask);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.txtIP);
+            this.Controls.Add(this.btnCalcola);
+            this.Controls.Add(this.btnInserisci);
+            this.Controls.Add(this.kryptonLabel2);
+            this.Controls.Add(this.kryptonLabel1);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.lblIP);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
@@ -210,22 +217,23 @@
         #endregion
 
         private System.Windows.Forms.Label lblIP;
-        private System.Windows.Forms.TextBox txtIP;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtMask;
-        private System.Windows.Forms.Button btnCalcola;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtHost;
-        private System.Windows.Forms.Button btnInserisci;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel1;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel2;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnInserisci;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnCalcola;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtIP;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtMask;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtHost;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn classe;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ipRete;
         private System.Windows.Forms.DataGridViewTextBoxColumn mask;
         private System.Windows.Forms.DataGridViewTextBoxColumn broadcast;
         private System.Windows.Forms.DataGridViewTextBoxColumn range;
-        private System.Windows.Forms.DataGridViewTextBoxColumn host;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RealNumHost;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Spreco;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nhost;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rnhost;
+        private System.Windows.Forms.DataGridViewTextBoxColumn spreco;
     }
 }
 
