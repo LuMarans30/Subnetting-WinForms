@@ -28,21 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.lblIP = new System.Windows.Forms.Label();
             this.txtIP = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtMask = new System.Windows.Forms.TextBox();
             this.btnCalcola = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtHost = new System.Windows.Forms.TextBox();
+            this.btnInserisci = new System.Windows.Forms.Button();
             this.classe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rete = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mask = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.broadcast = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.range = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.host = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtHost = new System.Windows.Forms.TextBox();
-            this.btnInserisci = new System.Windows.Forms.Button();
+            this.RealNumHost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Spreco = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -83,8 +86,8 @@
             // 
             this.btnCalcola.Location = new System.Drawing.Point(12, 459);
             this.btnCalcola.Name = "btnCalcola";
-            this.btnCalcola.Size = new System.Drawing.Size(746, 33);
-            this.btnCalcola.TabIndex = 3;
+            this.btnCalcola.Size = new System.Drawing.Size(946, 33);
+            this.btnCalcola.TabIndex = 5;
             this.btnCalcola.Text = "Calcola";
             this.btnCalcola.UseVisualStyleBackColor = true;
             this.btnCalcola.Click += new System.EventHandler(this.btnCalcola_Click);
@@ -99,11 +102,39 @@
             this.mask,
             this.broadcast,
             this.range,
-            this.host});
+            this.host,
+            this.RealNumHost,
+            this.Spreco});
             this.dataGridView1.Location = new System.Drawing.Point(15, 83);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(743, 370);
+            this.dataGridView1.Size = new System.Drawing.Size(943, 370);
             this.dataGridView1.TabIndex = 14;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(29, 49);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(58, 13);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "Num. host:";
+            // 
+            // txtHost
+            // 
+            this.txtHost.Location = new System.Drawing.Point(93, 46);
+            this.txtHost.Name = "txtHost";
+            this.txtHost.Size = new System.Drawing.Size(127, 20);
+            this.txtHost.TabIndex = 3;
+            // 
+            // btnInserisci
+            // 
+            this.btnInserisci.Location = new System.Drawing.Point(226, 44);
+            this.btnInserisci.Name = "btnInserisci";
+            this.btnInserisci.Size = new System.Drawing.Size(130, 23);
+            this.btnInserisci.TabIndex = 4;
+            this.btnInserisci.Text = "Inserisci nuova sottorete";
+            this.btnInserisci.UseVisualStyleBackColor = true;
+            this.btnInserisci.Click += new System.EventHandler(this.btnInserisci_Click);
             // 
             // classe
             // 
@@ -138,41 +169,25 @@
             // 
             // host
             // 
-            this.host.HeaderText = "Num. host";
+            this.host.HeaderText = "Num. hosts richiesti";
             this.host.Name = "host";
             this.host.ReadOnly = true;
             // 
-            // label1
+            // RealNumHost
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(29, 49);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 13);
-            this.label1.TabIndex = 15;
-            this.label1.Text = "Num. host:";
+            this.RealNumHost.HeaderText = "Vero numero di hosts";
+            this.RealNumHost.Name = "RealNumHost";
             // 
-            // txtHost
+            // Spreco
             // 
-            this.txtHost.Location = new System.Drawing.Point(93, 46);
-            this.txtHost.Name = "txtHost";
-            this.txtHost.Size = new System.Drawing.Size(127, 20);
-            this.txtHost.TabIndex = 16;
-            // 
-            // btnInserisci
-            // 
-            this.btnInserisci.Location = new System.Drawing.Point(226, 44);
-            this.btnInserisci.Name = "btnInserisci";
-            this.btnInserisci.Size = new System.Drawing.Size(130, 23);
-            this.btnInserisci.TabIndex = 17;
-            this.btnInserisci.Text = "Inserisci nuova sottorete";
-            this.btnInserisci.UseVisualStyleBackColor = true;
-            this.btnInserisci.Click += new System.EventHandler(this.btnInserisci_Click);
+            this.Spreco.HeaderText = "Spreco";
+            this.Spreco.Name = "Spreco";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(772, 502);
+            this.ClientSize = new System.Drawing.Size(970, 502);
             this.Controls.Add(this.btnInserisci);
             this.Controls.Add(this.txtHost);
             this.Controls.Add(this.label1);
@@ -182,8 +197,9 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtIP);
             this.Controls.Add(this.lblIP);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Subnetting";
             this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -208,6 +224,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn broadcast;
         private System.Windows.Forms.DataGridViewTextBoxColumn range;
         private System.Windows.Forms.DataGridViewTextBoxColumn host;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RealNumHost;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Spreco;
     }
 }
 

@@ -65,7 +65,12 @@ namespace Subnetting
                 return 0;
             }
 
-            return (int)Math.Log(numhost - 1, 2) + 1;
+            int exp = (int)Math.Log(numhost - 1, 2) + 1;
+            if (Math.Pow(2,exp)-2>numhost)
+            {
+                return exp;
+            }
+            return exp + 1;
         }
 
         public override string ToString()

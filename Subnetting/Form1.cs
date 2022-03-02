@@ -21,6 +21,7 @@ namespace Subnetting
         public Form1()
         {
             InitializeComponent();
+            this.Icon = Properties.Resources.icon;
             netmask = 0;
             numhost = 0;
         }
@@ -32,18 +33,56 @@ namespace Subnetting
 
             for (int i = 0; i < listSottorete.Count; i++)
             {
-                if(i>0)
+                try
                 {
-                    for (int k = 0; k < 4; k++)
-                        listSottorete[i].ipRete[k] = listSottorete[i - 1].broadcast[k];
-
-                    if(listSottorete[i].ipRete[3] == 255)
+                    if (i > 0)
                     {
-                        listSottorete[i].ipRete[3] = 0;
-                        listSottorete[i].ipRete[2] += 1;
-                    }else
-                        listSottorete[i].ipRete[3] += 1;
+                        Int32[] sot = listSottorete[i].ipRete;
+
+                        for (int k = 0; k < 4; k++)
+                            sot[k] = listSottorete[i - 1].broadcast[k];
+
+                        if ((listSottorete[i].classe == 'A' && sot[0] < 127) || (listSottorete[i].classe == 'B' && sot[0] < 191) || (listSottorete[i].classe == 'C' && sot[0] < 223))
+                        {
+
+                            if (sot[3] == 255 && sot[2] == 255 && sot[1] == 255)
+                            {
+                                sot[3] = 0;
+                                sot[2] = 0;
+                                sot[1] = 0;
+                                sot[0]++;
+                            }
+                            else if (sot[3] == 255 && sot[2] == 255 && sot[1] != 255)
+                            {
+                                sot[3] = 0;
+                                sot[2] = 0;
+                                sot[1]++;
+                            }
+                            else if (sot[3] == 255 && sot[2] != 255)
+                            {
+                                sot[3] = 0;
+                                sot[2]++;
+
+                            }
+                            else if (sot[3] != 255)
+                            {
+                                sot[3]++;
+
+                            }
+                            
+                        }
+                        else
+                            throw new EccezioneClasseNonValida("Non è possibile aggiungere ulteriori sottoreti");
+
+                        listSottorete[i].ipRete = sot;
+                    }
+                    
+                }catch(EccezioneClasseNonValida ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    pulisci();
                 }
+                
 
                 Sottorete s = listSottorete[i];
                 int num = s.ToPotenzaDi2();
@@ -76,7 +115,16 @@ namespace Subnetting
 
                 s.primoH[3] += 1;
                 s.ultimoH[3] -= 1;
-                dataGridView1.Rows.Add(s.classe, s, s.netmask, string.Join(".", s.broadcast), string.Join(".", s.primoH) + " - " + string.Join(".", s.ultimoH), s.numhost);
+                int realh = s.ultimoH[3] - s.primoH[3] + s.ultimoH[2] * 255 - s.primoH[2] * 255 + s.ultimoH[1] * 255 * 255 - s.primoH[1] * 255 * 255;
+                dataGridView1.Rows.Add(
+                    s.classe,
+                    s,
+                    s.netmask,
+                    string.Join(".", s.broadcast),
+                    string.Join(".", s.primoH) + " - " + string.Join(".", s.ultimoH),
+                    s.numhost,
+                    realh,
+                    realh - s.numhost);
             }
 
         }
@@ -110,10 +158,10 @@ namespace Subnetting
                 Sottorete sottorete = new Sottorete(indirizzo, netmask, numhost);
                 sottorete.checkValido();
                 listSottorete.Add(sottorete);
-                dataGridView1.Rows.Add(sottorete.classe, sottorete, netmask, "", "", numhost);
+                dataGridView1.Rows.Add(sottorete.classe, sottorete, netmask, "", "", numhost, "", "");
 
-                this.txtIP.Enabled = false;
-                this.txtMask.Enabled = false;
+                txtIP.Enabled = false;
+                txtMask.Enabled = false;
             }
             catch(EccezioneClasseNonValida ex)
             {
