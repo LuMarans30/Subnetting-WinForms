@@ -62,7 +62,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(313, 15);
+            this.label3.Location = new System.Drawing.Point(301, 15);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(12, 16);
             this.label3.TabIndex = 9;
@@ -106,12 +106,12 @@
             // 
             this.txtIP.Location = new System.Drawing.Point(117, 12);
             this.txtIP.Name = "txtIP";
-            this.txtIP.Size = new System.Drawing.Size(183, 23);
+            this.txtIP.Size = new System.Drawing.Size(178, 23);
             this.txtIP.TabIndex = 1;
             // 
             // txtMask
             // 
-            this.txtMask.Location = new System.Drawing.Point(331, 12);
+            this.txtMask.Location = new System.Drawing.Point(319, 12);
             this.txtMask.Name = "txtMask";
             this.txtMask.Size = new System.Drawing.Size(31, 23);
             this.txtMask.TabIndex = 2;
